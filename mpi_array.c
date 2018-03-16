@@ -90,7 +90,8 @@ if (taskid == MASTER){
     offset = offset + chunksize;
     }
   printf("*** Final sum= %e ***\n",sum);
-
+  double t1 = MPI_Wtime();
+  printf("The whole program took %f sec", t1-t0);
   }  /* end of master section */
 
 
@@ -116,8 +117,7 @@ if (taskid > MASTER) {
 
   } /* end of non-master */
 
-double t1 = MPI_Wtime();
-printf("The whole program took %f sec in %d machines", t1-t0, numtasks);
+
 MPI_Finalize();
 
 }   /* end of main */
